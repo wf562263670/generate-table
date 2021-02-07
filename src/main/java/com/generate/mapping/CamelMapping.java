@@ -24,6 +24,13 @@ public class CamelMapping {
         return sb.toString();
     }
 
+    public static String toLowerCaseFirstOne(String s){
+        if(Character.isLowerCase(s.charAt(0)))
+            return s;
+        else
+            return Character.toLowerCase(s.charAt(0)) + s.substring(1);
+    }
+
     public static String parseCamel(String value) {
         StringBuilder sb = new StringBuilder(value);
         for (int i = 0; i < value.length(); i++) {

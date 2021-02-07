@@ -89,14 +89,14 @@ public class ScanService {
         map.put(autoTable.getTableName(), tableList);
     }
 
-    private static class instance {
-        private static Map<String, List<AutoTable>> tableData() {
-            if (!map.isEmpty()) return map;
-            ScanService scanService = new ScanService();
-            scanService.getTable();
-            return map;
+        private static class instance {
+            private static Map<String, List<AutoTable>> tableData() {
+                if (!map.isEmpty()) return map;
+                ScanService scanService = new ScanService();
+                scanService.getTable();
+                return map;
+            }
         }
-    }
 
     private ScanService() {
     }
