@@ -1,5 +1,7 @@
 package com.generate.mapping;
 
+import java.util.Locale;
+
 /**
  * wangfei
  */
@@ -48,6 +50,6 @@ public class CamelMapping {
                 return parseCamel(sb.toString());
             }
         }
-        return sb.toString();
+        return sb.toString().toLowerCase(Locale.ROOT);
     }
 }
