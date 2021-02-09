@@ -30,7 +30,6 @@ public class FileUtil {
                     }
                 }
                 data.put(key, value);
-                System.out.println(key + "---" + value);
             }
             return data;
         }
