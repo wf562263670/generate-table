@@ -15,7 +15,7 @@ public class FileUtil {
 
         private static Map<Object, Object> config() {
             if (!data.isEmpty()) return data;
-            Properties properties = FileUtil.load("generate.properties");
+            Properties properties = FileUtil.load("application.properties");
             Set<Map.Entry<Object, Object>> entries = properties.entrySet();
             for (Map.Entry<Object, Object> entry : entries) {
                 data.put(entry.getKey(), entry.getValue());
