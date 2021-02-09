@@ -17,13 +17,30 @@ public class FileUtil {
             if (!data.isEmpty()) return data;
             Properties properties = FileUtil.load("application.properties");
             Set<Map.Entry<Object, Object>> entries = properties.entrySet();
+            String key, value, k;
             for (Map.Entry<Object, Object> entry : entries) {
-                data.put(entry.getKey(), entry.getValue());
+                key = entry.getKey().toString();
+                value = entry.getValue().toString();
+                if (value.startsWith("$") && value.endsWith("}")) {
+                    k = value.substring(2, value.length() - 1);
+                    for (Map.Entry<Object, Object> e : entries) {
+                        if (e.getKey().toString().equals(k)) {
+                            value = e.getValue().toString();
+                        }
+                    }
+                }
+                data.put(key, value);
+                System.out.println(key + "---" + value);
             }
             return data;
         }
 
     }
+
+    public static void main(String[] args) {
+        getConfig();
+    }
+
 
     private FileUtil() {
     }
