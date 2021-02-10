@@ -58,6 +58,7 @@ public class Create {
             if (i < length - 1) sb.append(",");
         }
         sb.append(") CHARACTER SET utf8 COLLATE utf8_general_ci");
+        executeService.deleteTable(tableName);
         conn.execute(sb.toString());
         executeService.addTableData(list);
     }

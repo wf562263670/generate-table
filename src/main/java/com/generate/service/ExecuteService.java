@@ -1,7 +1,6 @@
 package com.generate.service;
 
 
-
 import com.generate.config.AutoTable;
 import com.generate.mapping.ResultMapping;
 import com.generate.utils.DBConnection;
@@ -59,11 +58,15 @@ public class ExecuteService {
         conn.execute(sql);
     }
 
+    public void deleteTable(String tableName) {
+        String sql = "DELETE FROM `auto_table` WHERE table_name = '" + tableName + "'";
+        conn.execute(sql);
+    }
+
     public void deleteData(AutoTable autoTable) {
         String sql = "DELETE FROM `auto_table` WHERE table_name = '" + autoTable.getTableName() + "' AND field = '" + autoTable.getField() + "'";
         conn.execute(sql);
     }
-
 
     private String getDatabase() {
         String db = params.get("jdbc.url").toString();
