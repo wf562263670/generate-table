@@ -38,7 +38,7 @@ public class Create {
         for (int i = 0, length = list.size(); i < length; i++) {
             field = list.get(i);
             type = field.getType();
-            sb.append(field.getFieldName()).append(" ").append(type);
+            sb.append(field.getFieldName()).append(" ").append(type).append(" ");
             if (Type.isString(type) || Type.isNumber(type)) {
                 sb.append("(").append(field.getSize()).append(") ");
             } else if (Type.isDecimal(type)) {
@@ -50,11 +50,11 @@ public class Create {
             } else {
                 sb.append(" ");
             }
-            if (!field.isNull()) sb.append("NOT NULL ");
-            if (field.isKey()) sb.append("PRIMARY KEY ");
+            if (!field.isNull()) sb.append(" NOT NULL ");
+            if (field.isKey()) sb.append(" PRIMARY KEY ");
             if (field.isAutoIncrement() && Type.isNumber(type)) sb.append("AUTO_INCREMENT ");
-            if (!"".equals(field.getDefaults())) sb.append("DEFAULT '").append(field.getDefaults()).append("' ");
-            if (!"".equals(field.getFieldRemark())) sb.append("COMMENT '").append(field.getFieldRemark()).append("'");
+            if (!"".equals(field.getDefaults())) sb.append(" DEFAULT '").append(field.getDefaults()).append("' ");
+            if (!"".equals(field.getFieldRemark())) sb.append(" COMMENT '").append(field.getFieldRemark()).append("'");
             if (i < length - 1) sb.append(",");
         }
         sb.append(") CHARACTER SET utf8 COLLATE utf8_general_ci");

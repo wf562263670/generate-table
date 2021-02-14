@@ -58,8 +58,8 @@ public class Update {
         StringBuilder sb = new StringBuilder();
         String type, fieldName;
         sb.append("ALTER TABLE `").append(field.getTableName()).append("` CHANGE ")
-                .append(CamelMapping.parseString(field.getField())).append(" ")
                 .append(fieldName = field.getFieldName()).append(" ")
+                .append(fieldName).append(" ")
                 .append(type = field.getType());
         if (Type.isString(type) || Type.isNumber(type)) {
             sb.append("(").append(field.getSize()).append(") ");
@@ -73,10 +73,10 @@ public class Update {
             sb.append(" ");
         }
         if (null != field.getDefaults() && !"".equals(field.getDefaults()))
-            sb.append("DEFAULT '").append(field.getDefaults()).append("'");
+            sb.append(" DEFAULT '").append(field.getDefaults()).append("'");
         if (!field.isNull()) sb.append(" NOT NULL ");
         if (null != field.getFieldRemark() && !"".equals(field.getFieldRemark()))
-            sb.append("COMMENT '").append(field.getFieldRemark()).append("'");
+            sb.append(" COMMENT '").append(field.getFieldRemark()).append("'");
         if (!conn.execute(sb.toString())) return;
         executeService.deleteData(field);
         executeService.addData(field);
